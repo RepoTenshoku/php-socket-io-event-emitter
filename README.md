@@ -7,7 +7,7 @@ It seems that the original project (above) has not been maintained from a long t
 ## Install
 
 ```
-php composer require https://github.com/RepoTenshoku/php-socket-io-event-emitter
+php composer require touskar/php-socket-io-event-emitter
 ```
 
 ## PHP

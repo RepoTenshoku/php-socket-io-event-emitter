@@ -1,13 +1,15 @@
 {
-  "name": "repotenshoku/php-socket-io-event-emitter",
+  "name": "touskar/php-socket-io-event-emitter",
   "authors": [
     {
       "name": "Moussa Ndour",
       "email": "moussa_ndour@hotmail.fr"
     },
     {
-      "name": "RepoTenshoku Team",
-      "email": "help@repotenshoku.com"
+      "name": "Rogerio Taques",
+      "email": "rogerio@repotenshoku.com",
+      "homepage": "https://repotenshoku.com",
+      "role": "Developer"
     }
   ],
   "require": {}
