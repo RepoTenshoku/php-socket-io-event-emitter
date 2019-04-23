@@ -1,18 +1,17 @@
-PHP Socket Client 
-===================
+# PHP Socket Client
 
-Fork from : ```https://github.com/psinetron/PHP_SocketIO_Client```
+Forked from : `https://github.com/touskar/php-socket-io-event-emitter`.
 
+It seems that the original project (above) has not been maintained from a long time (about 2 years).
 
-***install***
-
+## Install
 
 ```
-php composer require touskar/php-socket-io-event-emitter
+php composer require https://github.com/RepoTenshoku/php-socket-io-event-emitter
 ```
 
+## PHP
 
-***Php***
 ```php
 
 require_once '../SocketIO.php';
@@ -43,71 +42,71 @@ else{
 
 ```
 
-***Node Js***
-
+## NodeJS
 
 ```js
+var app = require('http').createServer(handler);
+var io = require('socket.io')(app);
+var fs = require('fs');
 
-var app = require('http').createServer(handler)
-   var io = require('socket.io')(app);
-   var fs = require('fs');
-   
-   app.listen(9001);
-   
-   function handler (req, res) {
-       res.writeHead(200);
-       res.end('Hello Word');
-   }
-   
-   
-   io.on('connection', function (socket) {
-   
-       console.log("New Connection with transport", socket.conn.transport.name);
-   
-       console.log('With handshake', socket.handshake);
-   
-   
-       console.log('With query', socket.handshake.query);
-   
-       socket.on('eventFromPhp', function (data) {
-           console.log('Data from Php', data, JSON.parse(data));
-       });
-   });
-   
+app.listen(9001);
+
+function handler(req, res) {
+  res.writeHead(200);
+  res.end('Hello Word');
+}
+
+io.on('connection', function(socket) {
+  console.log('New Connection with transport', socket.conn.transport.name);
+
+  console.log('With handshake', socket.handshake);
+
+  console.log('With query', socket.handshake.query);
+
+  socket.on('eventFromPhp', function(data) {
+    console.log('Data from Php', data, JSON.parse(data));
+  });
+});
 ```
-   
-   **2 - API**
-   -------------
-***.```setMaxRetry(n)```***
+
+# API
+
+---
+
+**_.`setMaxRetry(n)`_**
+
 ```
 $client->setMaxRetry(10);//default 5
 ```
 
-***.```setRetryInterval(interval)```***
+**_.`setRetryInterval(interval)`_**
+
 ```
 $client->setRetryInterval(100);// 100 ms, default 200
 ```
 
+**_.`setProtocole(protocol)`_**
 
-***.```setProtocole(protocol)```***
 ```
 $client->setProtocole(SocketIO::NO_SECURE_PROTOCOLE);
 $client->setProtocole(SocketIO::TLS_PROTOCOLE);
 $client->setProtocole(SocketIO::SSL_PROTOCOLE);
 ```
 
-***.```setPort(port)```***
+**_.`setPort(port)`_**
+
 ```
 $client->setPort(80);
 ```
 
-***.```setPath(path)```***
+**_.`setPath(path)`_**
+
 ```
 $client->setPath('/socket.io/EIO=3');
 ```
 
-***.```setHost(host)```***
+**_.`setHost(host)`_**
+
 ```
 $client->setPath('localhost');
 ```
-
