@@ -298,11 +298,17 @@ class SocketIO
         $out.= "Origin: *\r\n\r\n";
 
         fwrite($fd, $out);
+
         // 101 switching protocols, see if echoes key
         $result= fread($fd,10000);
+        $keyAccept = '';
 
         preg_match('#Sec-WebSocket-Accept:\s(.*)$#mU', $result, $matches);
-        $keyAccept = trim($matches[1]);
+
+        if (isset($matches[1])) {
+          $keyAccept = trim($matches[1]);
+        }
+
         $expectedResonse = base64_encode(pack('H*', sha1($key . '258EAFA5-E914-47DA-95CA-C5AB0DC85B11')));
         $handshaked = ($keyAccept === $expectedResonse) ? true : false;
 
